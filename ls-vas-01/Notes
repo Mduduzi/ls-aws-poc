@@ -1,0 +1,63 @@
+cp4i-secrets-enticlement
+
+{"auths":{"cp.icr.io":{"username":"cp","password":"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJJQk0gTWFya2V0cGxhY2UiLCJpYXQiOjE1ODc5OTI0MzMsImp0aSI6IjQwOWU2MzM4MDc0YjQzODViNTIwNjJlOTdiNzAzNzI4In0.lsW6HwcbWZMR0WA7HS9toYtef3CsyjtSDT7bHv5CCGo","auth":"Y3A6ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKcGMzTWlPaUpKUWswZ1RXRnlhMlYwY0d4aFkyVWlMQ0pwWVhRaU9qRTFPRGM1T1RJME16TXNJbXAwYVNJNklqUXdPV1UyTXpNNE1EYzBZalF6T0RWaU5USXdOakpsT1RkaU56QXpOekk0SW4wLmxzVzZId2NiV1pNUjBXQTdIUzl0b1l0ZWYzQ3N5anRTRFQ3Ykh2NUNDR28="}}}
+
+
+Run the below commands to set the variables export ENTITLED_REGISTRY=cp.icr.io export ENTITLED_REGISTRY_USER=cp export ENTITLED_REGISTRY_KEY=<>
+	
+	
+	
+Once you have set these variables, you can login to the registry:
+
+
+export ENTITLED_REGISTRY=cp.icr.io
+export ENTITLED_REGISTRY_USER=cp
+export ENTITLED_REGISTRY_KEY=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJJQk0gTWFya2V0cGxhY2UiLCJpYXQiOjE1ODc5OTI0MzMsImp0aSI6IjQwOWU2MzM4MDc0YjQzODViNTIwNjJlOTdiNzAzNzI4In0.lsW6HwcbWZMR0WA7HS9toYtef3CsyjtSDT7bHv5CCGo
+
+docker login "$ENTITLED_REGISTRY" -u "$ENTITLED_REGISTRY_USER" -p "$ENTITLED_REGISTRY_KEY"
+docker logout "$ENTITLED_REGISTRY"
+
+
+git clone https://github.com/Mduduzi/ss-poc-ace.git
+
+docker build -t default-route-openshift-image-registry.apps.integrationocpaznp.standardbank.co.za:443/ace/ace-dev-ss-poc:latest .
+
+ docker login default-route-openshift-image-registry.apps.integrationocpaznp.standardbank.co.za -u mduduzi.mdlalose@standardbank.co.za
+docker login default-route-openshift-image-registry.apps.integrationocpaznp.standardbank.co.za -u kubeadmin -p uzhk5-H4ijB-XnBtV-nhYAK
+docker login default-route-openshift-image-registry.apps.integrationocpaznp.standardbank.co.za:443 -u kubeadmin -p uzhk5-H4ijB-XnBtV-nhYAK
+
+## Works
+docker login default-route-openshift-image-registry.apps.integrationocpaznp.standardbank.co.za:443 -u developer -p $(oc whoami -t) 
+
+## Works
+docker push default-route-openshift-image-registry.apps.integrationocpaznp.standardbank.co.za:443/ace/ace-dev-ss-poc:1.0
+docker push default-route-openshift-image-registry.apps.integrationocpaznp.standardbank.co.za:443/ace/ace-dev-ss-poc:latest
+
+## Works
+oc new-app --image-stream="ace/ace-dev-ss-poc:latest" --name=ace-ss-poc-is-04
+oc expose svc/ace-ss-poc-is-04
+
+
+## Delete
+oc expose svc/ace-ss-poc-is-03
+
+
+	
+Once you have logged in successfully, you can pull the image from the entitlement registry. docker pull cp.icr.io/cp/appc/ace-server-prod:latest
+
+
+oc get all --selector app=nbviewer -o name
+
+oc delete all --selector app=nbviewer
+
+
+
+
+
+
+
+
+https://www.ibm.com/support/knowledgecenter/SSTTDS_11.0.0/com.ibm.etools.mft.doc/py00118_.html
+
+https://www.ibm.com/support/knowledgecenter/SSTTDS_11.0.0/com.ibm.ace.icp.doc/config_genericfiles.html
+
