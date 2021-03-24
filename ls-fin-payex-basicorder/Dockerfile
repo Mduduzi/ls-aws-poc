@@ -1,4 +1,5 @@
-FROM cp.icr.io/cp/appc/ace-server-prod:latest
+FROM image-registry.openshift-image-registry.svc:5000/ls-aws-poc/ace-server-prod 
+#FROM cp.icr.io/cp/appc/ace-server-prod:latest
 
 ENV LICENSE "accept"
 
