@@ -1,0 +1,24 @@
+oc create is ls-fin-payex-basicorder
+
+oc apply -f - <<EOF
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: ls-fin-payex-basicorder
+  labels:
+    name: ls-fin-payex-basicorder
+spec:
+  triggers:
+    - type: ConfigChange
+  source:
+    contextDir: "ls-fin-payex-basicorder/"
+    type: Git
+    git:
+      uri: 'https://github.com/Mduduzi/ls-aws-poc.git'
+  strategy:
+    type: Docker
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'ls-fin-payex-basicorder:latest'
+EOF

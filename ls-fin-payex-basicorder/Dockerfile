@@ -1,0 +1,10 @@
+FROM cp.icr.io/cp/appc/ace-server-prod:latest
+
+ENV LICENSE "accept"
+
+# Copy the BAR files to ace-server bars directory
+RUN mkdir -p /tmp/ls/pes/custom/input
+RUN mkdir -p /tmp/ls/pes/custom/output
+COPY bars /home/aceuser/bars
+
+RUN ace_compile_bars.sh
