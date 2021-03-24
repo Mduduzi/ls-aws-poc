@@ -1,0 +1,7 @@
+# Go into your existing directory and run below commands
+git init
+git add -A
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/Mduduzi/ls-aws-poc.git
+git push -u origin main
